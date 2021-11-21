@@ -15,10 +15,11 @@ S의 길이는 적어도 1이며, 20글자를 넘지 않는다.
 각 테스트 케이스에 대해 P를 출력한다.
 '''
 
-testcase = num(input())
+testcase = int(input())
 for _ in range(testcase) :
     num, str = input().split()
     num = int(num)
-    for i in str :
-        
+    ans = [i * num for i in list(str)]
+    print(''.join(ans))
+
 
