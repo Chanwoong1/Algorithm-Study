@@ -17,7 +17,16 @@ X가 주어졌을 때, X번째 분수를 구하는 프로그램을 작성하시�
 '''
 
 num = int(input())
-
-for i in range(num) :
-    num = num - i
-    
+i = 1
+sum = 1
+while True :
+    if sum >= num :
+        break
+    i += 1
+    sum += i
+if i % 2 == 0 : # 짝수일 때 아래로 내려가기
+    lst = [str(i - j + 1) + '/' + str(j) for j in range(1, i + 1)]
+    print(lst[sum - num])
+else : # 홀수일 때
+    lst = [str(j) + '/' + str(i - j + 1) for j in range(1, i + 1)]
+    print(lst[sum - num])
