@@ -14,16 +14,18 @@ n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자�
 10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
 '''
 
-lst = []
-for num in range(1, 10001) :
-    a = [str(num)] + list(str(num))
-    lst.append(sum([int(i) for i in a]))
-ans = sorted(list(filter(lambda x : x < 10000, lst)))
-lst = list(range(1, 10000))
-for a in ans :
-    try :
-        lst.remove(a)
-    except :
-        pass
-for j in lst :
-    print(j)
+def d(number) :
+    lst = []
+    for num in range(1, number) :
+        a = [str(num)] + list(str(num))
+        lst.append(sum([int(i) for i in a]))
+    ans = sorted(list(filter(lambda x : x < number, lst)))
+    lst = list(range(1, number))
+    for a in ans :
+        try :
+            lst.remove(a)
+        except :
+            pass
+    for j in lst :
+        print(j)
+d(10000)
