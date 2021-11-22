@@ -17,10 +17,8 @@
 
 for _ in range(int(input())) :
     x1, y1, r1, x2, y2, r2 = map(int, input().split())
-    dist = abs(x2 - x1) + abs(y2 - y1)
-    if dist < r1 + r2 :
-        print(2)
-    elif dist == r1 + r2 :
-        print(1)
-    else :
-        print(0)
+    dist = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** (1/2)
+    r_dist = [r1, r2, dist]
+    m = max(r_dist)
+    r_dist.remove(m)
+    print(-1 if (dist == 0 and r1 == r2) else 1 if (dist == r1 + r2 or m == sum(r_dist)) else 0 if (m > sum(r_dist)) else 2)
