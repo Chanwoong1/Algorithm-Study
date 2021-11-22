@@ -11,12 +11,9 @@ N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한
 
 N = int(input())
 n = 2
-if N == 1 :
-    None
-else :
-    while N > 2 :
-        if N % n == 0 :
-            print(n)
-            N = N / n
-        else :
-            n += 1
+while N != 2 :
+    if N % n == 0 :
+        print(n)
+        N = N / n
+    else :
+        n += 1
