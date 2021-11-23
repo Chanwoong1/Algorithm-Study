@@ -18,11 +18,33 @@ X1, X2, ..., XN에 좌표 압축을 적용한 결과 X'1, X'2, ..., X'N를 출�
 -109 ≤ Xi ≤ 109
 '''
 
-from collections import Counter
-N = int(input())
-X = list(input().split())
+# 시간초과
+import sys
+N = int(sys.stdin.readline())
+X = list(sys.stdin.readline().split())
+num_dict = {}
+sorted_X = sorted([int(i) for i in X])
 
-for num in X :
-    print(num)
-    mode_dict = Counter(num)
-print(mode_dict)
+n = 0
+for i in range(len(sorted_X) - 1) :
+    if sorted_X[i] != sorted_X[i+1] :
+        num_dict[str(sorted_X[i])] = n
+        n += 1
+    else :
+        num_dict[str(sorted_X[i])] = n
+
+result = []
+for i in X :
+    result.append([v for j, v in num_dict.items() if j == i][0])
+
+print(' '.join([str(i) for i in result]))
+
+# 수정
+import sys
+n = int(sys.stdin.readline())
+arr = list(map(int, sys.stdin.readline().split()))
+
+arr2 = sorted(list(set(arr)))
+dic = {arr2[i] : i for i in range(len(arr2))}
+for i in arr:
+    print(dic[i], end = ' ')
