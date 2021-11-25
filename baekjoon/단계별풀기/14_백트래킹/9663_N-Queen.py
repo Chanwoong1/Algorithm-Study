@@ -69,6 +69,7 @@ N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 
 # dfs(0)
 # print(result)
 
+# 수정
 n = int(input())
 row = [0] * n
 column = [False] * n
