@@ -25,3 +25,32 @@ N개의 수와 N-1개의 연산자가 주어졌을 때, 만들 수 있는 식의
 첫째 줄에 만들 수 있는 식의 결과의 최댓값을, 둘째 줄에는 최솟값을 출력한다. 연산자를 어떻게 끼워넣어도 항상 -10억보다 크거나 같고, 10억보다 작거나 같은 결과가 나오는 입력만 주어진다. 또한, 앞에서부터 계산했을 때, 중간에 계산되는 식의 결과도 항상 -10억보다 크거나 같고, 10억보다 작거나 같다.
 '''
 
+import sys
+input = sys.stdin.readline
+N = int(input())
+num = list(map(int, input().split()))
+op = list(map(int, input().split()))  # +, -, *, //
+
+maximum = -1e9
+minimum = 1e9
+
+def dfs(depth, total, plus, minus, multiply, divide):
+    global maximum, minimum
+    if depth == N:
+        maximum = max(total, maximum)
+        minimum = min(total, minimum)
+        return
+
+    if plus:
+        dfs(depth + 1, total + num[depth], plus - 1, minus, multiply, divide)
+    if minus:
+        dfs(depth + 1, total - num[depth], plus, minus - 1, multiply, divide)
+    if multiply:
+        dfs(depth + 1, total * num[depth], plus, minus, multiply - 1, divide)
+    if divide:
+        dfs(depth + 1, int(total / num[depth]), plus, minus, multiply, divide - 1)
+
+
+dfs(1, num[0], op[0], op[1], op[2], op[3])
+print(maximum)
+print(minimum)
