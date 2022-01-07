@@ -1,0 +1,12 @@
+# https://www.acmicpc.net/problem/17388
+
+lst = list(map(int, input().split()))
+if sum(lst) >= 100 :
+    print("OK")
+else :
+    if min(lst) == lst[0] :
+        print("Soongsil")
+    elif min(lst) == lst[1] :
+        print("Korea")
+    else :
+        print("Hanyang")
