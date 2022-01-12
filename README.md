@@ -4,7 +4,7 @@
 
 - BOJ
   - 실버부터 플레까지
-[![Solved.ac/profile/jcw7468](http://mazassumnida.wtf/api/v2/generate_badge?boj={handle})](https://solved.ac/{handle})
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=jcw7468)](https://solved.ac/jcw7468)
 
 - Programmers
   - Level 3까지
