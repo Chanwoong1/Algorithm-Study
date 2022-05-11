@@ -1,22 +1,14 @@
 # https://www.acmicpc.net/problem/6603
 
-def lotto(arr, lst, n) :
-    if len(arr) == 6 :
-        tmp = [str(i) for i in arr]
-        print(' '.join(tmp))
-    
-    else :
-        for i in lst :
-            if i is not in arr :
+from itertools import combinations
 
-
-
-
+lst = list(map(int, input().split()))
 while 1 :
+    lst.pop(0)
+    for i in list(combinations(lst, 6)) :
+        tmp = [str(j) for j in i]
+        print(' '.join(tmp))
     lst = list(map(int, input().split()))
-    arr = []
     if lst[0] == 0 :
         break
-
-    n = lst.pop(0)
-    lotto(arr, lst, n)    
+    print()
