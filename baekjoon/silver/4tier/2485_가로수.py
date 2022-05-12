@@ -1,6 +1,7 @@
 # https://www.acmicpc.net/problem/2485
 
 import sys
+from math import gcd
 
 input = sys.stdin.readline
 lst = []
@@ -11,15 +12,11 @@ dt = []
 for i in range(1, len(lst)) :
     dt.append(lst[i] - lst[i - 1])
 
-def GCDofTwoNumbers(a, b) :
-    while b != 0 :
-        a, b = b, a % b
-    return a
+g = dt[0]
+for j in range(1, len(dt)) :
+    g = gcd(g, dt[j])
 
 answer = 0
-tree = lst[0]
-while tree <= max(lst) :
-    if tree not in lst :
-        answer += 1
-    tree += GCDofTwoNumbers(min(dt), max(dt))
+for i in dt :
+    answer += i // g - 1
 print(answer)
