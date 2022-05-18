@@ -1,13 +1,13 @@
 # https://www.acmicpc.net/problem/6064
 
-for _ in range(int(input())) :
-    M, N, x, y = list(map(int, input().split()))
-    year = 1
-    while 1 :
-        if year % M == x and year % N == y :
-            print(year)
-            break
-        if year == M * N + 1 :
-            print(-1)
-            break
-        year += 1
+def num(m, n, x, y) :
+    while x <= m * n :
+        if (x - y) % n == 0 :
+            return x
+        x += m
+    return -1
+
+t = int(input())
+for i in range(t) :
+    m, n, x, y = map(int, input().split())
+    print(num(m, n, x, y))
