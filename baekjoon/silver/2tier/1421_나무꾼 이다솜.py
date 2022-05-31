@@ -4,16 +4,18 @@ N, C, W = map(int, input().split())
 tree = [int(input()) for _ in range(N)]
 answer = 0
 i = max(tree)
-while i > 0 :
-    tmp = []
+for i in range(1, max(tree) + 1) :
+    tmp = 0
     for t in tree :
-        for _ in range(t // i) :
-            tmp.append(i)
-        if t % i != 0 :
-            tmp.append(t % i)
-    cost = (len(tmp) - N) * C
-    klw = sum([1 for k in tmp if k == i]) * i * W - cost
-    if answer < klw :
-        answer = klw
-    i -= 1
+        q, r = divmod(t, i)
+        if r :
+            cost = q * C
+        else :
+            cost = (q - 1) * C
+        klw = (q * i * W) - cost
+        if klw < 0 :
+            continue
+        tmp += klw
+    if answer < tmp :
+        answer = tmp
 print(answer)
