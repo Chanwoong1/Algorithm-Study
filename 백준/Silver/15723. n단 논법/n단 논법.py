@@ -1,6 +1,3 @@
-import sys
-
-sys.setrecursionlimit(10 ** 6)
 def dfs(a, b) :
     if a == b :
         print("T")
