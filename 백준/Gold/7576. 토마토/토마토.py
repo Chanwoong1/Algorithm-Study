@@ -1,5 +1,3 @@
-from collections import deque
-
 M, N = map(int, input().split())
 box = []
 for _ in range(N) :
@@ -7,10 +5,10 @@ for _ in range(N) :
 
 day = 0
 move = [1, -1, M, -M]
-tomato_location = deque([[i for i in range(len(box)) if box[i] == 1]])
+tomato_location = [[i for i in range(len(box)) if box[i] == 1]]
 while 1 :
     cnt = 0
-    day_tomato = tomato_location.popleft()
+    day_tomato = tomato_location.pop(0)
     next = []
     for tomato_idx in day_tomato :
         if tomato_idx + 1 < M * N and (tomato_idx + 1) % M != 0 and box[tomato_idx + 1] == 0:
@@ -34,6 +32,7 @@ while 1 :
     day += 1
     if len(next) > 0 :
         tomato_location.append(next)
+        
 if len([1 for i in box if i == 0]) > 0 :
 	print(-1)
 else :
