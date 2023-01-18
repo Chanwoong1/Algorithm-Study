@@ -1,4 +1,3 @@
 from math import factorial
-N, K = map(int, input().split())
-p = 10 ** 9 + 7
-print(factorial(N) * pow((factorial(N - K) * factorial(K)), -1, p) % p)
+n, k = map(int, input().split())
+print(int(factorial(n) / (factorial(k) * factorial(n-k)) % 1000000007))
