@@ -12,30 +12,27 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0)
 #define ll long long
 
-#define N 100000
-int g[N + 1][3];
+ll graph[100001][3];
+ll dp[100001][3];
 
 int main() {
-	int n, k;
-
-	k = 0;
-	while (1) {
-		k++;
-		scanf("%d", &n);
-		if (n == 0) break;
-		for (int i = 0; i < n; i++) {
-			scanf("%d %d %d", &g[i][0], &g[i][1], &g[i][2]);
-		}
-		g[0][0] = 987654321;
-		g[0][2] += g[0][1];
-		for (int i = 1; i < n; i++) {
-			// 왼쪽
-			g[i][0] += min(g[i - 1][0], g[i - 1][1]);
-			// 중간
-			g[i][1] += min(g[i - 1][0], min(g[i - 1][1], min(g[i - 1][2], g[i][0])));
-			// 오른쪽
-			g[i][2] += min(g[i - 1][1], min(g[i - 1][2], g[i][1]));
-		}
-		printf("%d. %d\n", k, g[n - 1][1]);
-	}
+    fast;
+    int cnt = 1;
+    while (1) {
+        int N;
+        cin >> N;
+        if (N == 0) break;
+        for (int i = 0; i < N; i++) cin >> graph[i][0] >> graph[i][1] >> graph[i][2];
+        dp[0][0] = 987654321;
+        dp[0][1] = graph[0][1];
+        dp[0][2] = graph[0][2] + graph[0][1];
+        for (int i = 1; i < N; i++)
+        {
+            dp[i][0] = min(dp[i - 1][0], dp[i - 1][1]) + graph[i][0];
+            dp[i][1] = min(min(dp[i - 1][0], dp[i][0]), min(dp[i - 1][1], dp[i - 1][2])) + graph[i][1];
+            dp[i][2] = min(dp[i - 1][1], min(dp[i - 1][2], dp[i][1])) + graph[i][2];
+        }
+        cout << cnt << ". " << dp[N - 1][1] << "\n";
+        cnt++;
+    }
 }
