@@ -1,18 +1,16 @@
-from collections import deque
 def solution(s):
-    q = deque()
+    st = []
     idx = 0
     while idx < len(s) :
-        q.append(s[idx])
-        if len(q) >= 2 :
-            tmp1 = q.pop()
-            tmp2 = q.pop()
+        st.append(s[idx])
+        if len(st) >= 2 :
+            tmp1 = st.pop()
+            tmp2 = st.pop()
             if (tmp2 == '(' and tmp1 == ')') == False :
-                q.append(tmp2)
-                q.append(tmp1)
+                st.append(tmp2)
+                st.append(tmp1)
         idx += 1
-    print(q)
-    if (len(q) == 0) :
+    if (len(st) == 0) :
         return True
     else :
         return False
