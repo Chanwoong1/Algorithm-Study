@@ -11,10 +11,7 @@ string solution(string X, string Y) {
     for (int i = 0; i < Y.length(); i++) vy[Y[i] - '0']++;
     vector<int> ans(10, 0);
     for (int i = 0; i < 10; i++) ans[i] = min(vx[i], vy[i]);
-    for (int i = 9; i >= 0; i--) {
-        if (ans[i] != 0) {
-            for (int j = 0; j < ans[i]; j++) answer += to_string(i);
-        }
-    }
+    for (int i = 9; i >= 0; i--)
+        for (int j = 0; j < ans[i]; j++) answer += to_string(i);
     return (answer.length() == 0) ? "-1" : (answer[0] == '0') ? "0" : answer;
 }
