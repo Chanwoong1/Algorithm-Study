@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 ans = 0
 while True :
     n = int(input())
