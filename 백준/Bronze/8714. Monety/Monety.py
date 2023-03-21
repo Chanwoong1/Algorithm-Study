@@ -1,3 +1,3 @@
 n = int(input())
-m = [*map(int, input().split())]
-print(min(n - sum(m), sum(m)))
+m = sum([*map(int, input().split())])
+print(min(n - m, m))
