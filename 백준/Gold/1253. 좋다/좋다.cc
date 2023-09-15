@@ -32,22 +32,19 @@ int main()
         int _start = 0 == i ? 1 : 0, _end = N - 1 == i ? N - 2 : N - 1;
         while (_start < _end)
         {
-            if (A[_start] + A[_end] >= A[i])
+            if (A[_start] + A[_end] > A[i])
+                _end--;
+            else if (A[_start] + A[_end] == A[i])
             {
-                if (A[_start] + A[_end] == A[i])
-                {
-                    if (_start == i)
-                        _start++;
-                    else if (_end == i)
-                        _end--;
-                    else
-                    {
-                        _answer++;
-                        break;
-                    }
-                }
-                else
+                if (_start == i)
+                    _start++;
+                else if (_end == i)
                     _end--;
+                else
+                {
+                    _answer++;
+                    break;
+                }
             }
             else
                 _start++;
