@@ -1,5 +1,4 @@
-A,B,C = map(int,input().split())
-if C==1:
-    print(A*B)
-else :
-    print(A*B/C)
+from decimal import Decimal
+a, b, c = map(int, input().split())
+result = Decimal(a) * Decimal(b) / Decimal(c)
+print(result)
